@@ -1,0 +1,19 @@
+find_program(CPACK_PATH cpack)
+
+if(CPACK_PATH)
+
+    set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+    set(CPACK_PACKAGE_VENDOR ${PROJECT_VENDOR})
+    set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})
+    set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+    set(CPACK_PACKAGE_HOMEPAGE_URL ${PROJECT_HOMEPAGE_URL})
+
+    set(CPACK_INSTALL_CMAKE_PROJECTS "${CMAKE_BINARY_DIR};${PROJECT_NAME};ALL;/")
+    
+    include(CPack)
+
+else()
+
+    message(WARNING "cpack non trouvé : le packaging ne sera pas disponible")
+
+endif()

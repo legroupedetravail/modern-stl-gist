@@ -1,0 +1,135 @@
+indent_with_tabs		= 0		# 1=indent to level only, 2=indent with tabs
+input_tab_size			= 8		# original tab size
+output_tab_size			= 4		# new tab size
+indent_columns			= output_tab_size
+indent_label			= 2		# pos: absolute col, neg: relative column
+indent_align_string		= False		# align broken strings
+indent_brace			= 0
+indent_access_spec		= 0		# indent of access specifiers (public/private/protected)
+indent_access_spec_body	= true		# whether to indent code after access specifier
+nl_before_access_spec	= 2		# newlines before access specifier (2 pour une ligne vide)
+nl_after_access_spec	= 2		# newlines after access specifier (2 pour une ligne vide)
+
+nl_enum_brace			= add		# "enum {" vs "enum \n {"
+nl_union_brace			= add		# "union {" vs "union \n {"
+nl_struct_brace			= add		# "struct {" vs "struct \n {"
+nl_do_brace			= add		# "do {" vs "do \n {"
+nl_if_brace			= add		# "if () {" vs "if () \n {"
+nl_for_brace			= add		# "for () {" vs "for () \n {"
+nl_else_brace			= add		# "else {" vs "else \n {"
+nl_while_brace			= add		# "while () {" vs "while () \n {"
+nl_switch_brace			= add		# "switch () {" vs "switch () \n {"
+nl_try_brace			= add		# "try {" vs "try \n {"
+nl_catch_brace			= add		# "catch {" vs "catch \n {"
+nl_after_brace_close		= true		# Add newline after closing braces
+# nl_var_def_blk_end_func_top	= 1
+# nl_before_case		= 1
+nl_fcall_brace			= add		# "foo() {" vs "foo()\n{"
+nl_fdef_brace			= add		# "int foo() {" vs "int foo()\n{"
+# nl_after_return		= TRUE
+nl_brace_while			= remove
+nl_brace_else			= add
+nl_squeeze_ifdef		= TRUE
+
+# mod_paren_on_return		= add		# "return 1;" vs "return (1);"
+# mod_full_brace_if		= add		# "if (a) a--;" vs "if (a) { a--; }"
+# mod_full_brace_for		= add		# "for () a--;" vs "for () { a--; }"
+# mod_full_brace_do		= add		# "do a--; while ();" vs "do { a--; } while ();"
+# mod_full_brace_while		= add		# "while (a) a--;" vs "while (a) { a--; }"
+
+sp_before_semi			= remove
+sp_paren_paren			= remove	# space between (( and ))
+sp_return_paren			= remove	# "return (1);" vs "return(1);"
+sp_sizeof_paren			= remove	# "sizeof (int)" vs "sizeof(int)"
+sp_before_sparen		= force		# "if (" vs "if("
+sp_after_sparen			= force		# "if () {" vs "if (){"
+sp_after_cast			= add		# "(int) a" vs "(int)a"
+sp_inside_braces		= force		# "{ 1 }" vs "{1}"
+sp_inside_braces_struct		= force		# "{ 1 }" vs "{1}"
+sp_inside_braces_enum		= force		# "{ 1 }" vs "{1}"
+sp_inside_paren			= remove
+sp_inside_fparen		= remove
+sp_inside_sparen		= remove
+sp_inside_for   		= remove
+#sp_type_func			= ignore
+sp_assign			= force
+sp_arith			= force
+sp_bool				= force
+sp_compare			= force
+sp_assign			= force
+sp_after_comma			= force
+sp_func_def_paren		= remove	# "int foo (){" vs "int foo(){"
+sp_func_call_paren		= remove	# "foo (" vs "foo("
+sp_func_proto_paren		= remove	# "int foo ();" vs "int foo();"
+sp_after_type           = force
+sp_before_ptr_star      = remove 
+sp_after_ptr_star       = force
+sp_before_byref         = remove
+sp_after_byref          = force
+
+align_with_tabs			= FALSE		
+align_on_tabstop		= FALSE		
+align_enum_equ_span		= 4
+align_nl_cont			= 1
+align_var_def_span		= 2
+align_var_def_inline		= TRUE
+align_var_def_star_style	= 1
+align_var_def_colon		= TRUE
+align_assign_span		= 1		# Aligne les opérateurs = sur la même colonne
+align_assign_thresh		= 0		# Aligne dès le premier caractère
+align_assign_decl_func = 2		# Aligne les = dans les déclarations de fonctions (0=aucun, 1=align sur span, 2=align sur le plus à droite)
+align_var_def_span		= 0		# Aligne les déclarations de variables sur la même colonne (modifié pour aligner = delete/default)
+align_struct_init_span		= 3
+align_var_struct_span		= 3
+align_right_cmt_span		= 3
+align_pp_define_span		= 3
+align_pp_define_gap		= 4
+align_number_right		= TRUE
+align_typedef_span		= 5
+align_typedef_gap		= 3
+
+# cmt_star_cont			= TRUE
+
+eat_blanks_before_close_brace	= TRUE
+eat_blanks_after_open_brace	= TRUE
+
+
+# Force le passage à la ligne avant le ':' (deux-points)
+nl_constr_init_args        = add
+# Force le passage à la ligne avant chaque virgule de la liste
+nl_constr_colon            = add
+# Positionne la virgule et le deux-points au début de la ligne
+pos_constr_comma           = lead
+pos_constr_colon           = lead
+
+# Force le passage à la ligne entre chaque argument
+nl_func_decl_args       = remove
+# Force le passage à la ligne après la parenthèse ouvrante
+nl_func_decl_start      = remove
+# Force le passage à la ligne avant la parenthèse fermante
+nl_func_decl_empty      = remove
+nl_func_decl_end        = remove
+
+# Pour les fonctions courtes comme les constructeurs deleted/default
+# Utilisons des options standard
+indent_func_def_param       = TRUE    # Pour les définitions
+indent_func_proto_param     = TRUE     # Pour les prototypes (headers)
+indent_func_call_param      = TRUE     # Pour les appels de fonctions
+
+# Configuration pour les namespaces
+nl_namespace_brace        = add      # "namespace {" vs "namespace \n {"
+# nl_after_namespace       = 2        # Ajoute 2 lignes après l'ouverture du namespace
+nl_inside_namespace       = 2        # Ajoute 2 lignes après l'ouverture du namespace
+nl_after_namespace        = 1        # Ajoute 1 ligne avant la fermeture du namespace
+indent_namespace          = true     # Indente le contenu du namespace
+
+# Pour les fonctions sur une seule ligne (comme = delete, = default)
+# Ces options n'existent pas dans cette version, donc on utilise des alternatives
+
+# Contrôle la longueur maximale pour les fonctions sur une seule ligne
+code_width               = 120      # Largeur maximale avant wrap
+
+# Règles spécifiques pour les fonctions deleted/default
+# On utilise des options standard pour forcer le formatage souhaité
+nl_func_leave_one_liners = true    # Garde les fonctions courtes sur une seule ligne
+sp_before_assign = force           # Force un espace avant l'opérateur = pour un meilleur alignement

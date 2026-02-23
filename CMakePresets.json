@@ -1,0 +1,175 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 31,
+        "patch": 6
+    },
+  "configurePresets": [
+    {
+        "name": "base",
+        "hidden": true,
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "installDir": "${sourceDir}/install/${presetName}",
+        "cacheVariables": {
+          "CMAKE_CXX_EXTENSIONS": "OFF",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        }
+    },
+    {
+      "name": "msvc-base",
+      "inherits": "base",
+      "hidden": true,
+      "generator": "Visual Studio 18 2026",
+      "cacheVariables": {
+          "CMAKE_CXX_COMPILER": "cl",
+          "CMAKE_C_COMPILER": "cl",
+          "CMAKE_GENERATOR_PLATFORM": "x64"
+      }
+    },
+    {
+      "name": "gcc-base",
+      "inherits": "base",
+      "hidden": true,
+      "generator": "Unix Makefiles",
+      "cacheVariables": {
+          "CMAKE_CXX_COMPILER": "g++",
+          "CMAKE_C_COMPILER": "gcc"
+      }
+    },
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC Release Configuration",
+      "inherits": "msvc-base",
+      "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug Configuration",
+      "inherits": "msvc-base",
+      "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release Configuration",
+      "inherits": "gcc-base",
+      "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug Configuration",
+      "inherits": "gcc-base",
+      "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC Release Build",
+      "configurePreset": "msvc-release"
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug Build",
+      "configurePreset": "msvc-debug"
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release Build",
+      "configurePreset": "gcc-release"
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug Build",
+      "configurePreset": "gcc-debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC Release Tests",
+      "configurePreset": "msvc-release",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug Tests",
+      "configurePreset": "msvc-debug",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release Tests",
+      "configurePreset": "gcc-release",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug Tests",
+      "configurePreset": "gcc-debug",
+      "output": { "outputOnFailure": true }
+    }
+  ], 
+  "packagePresets": [
+    {
+      "name": "msvc-release-package",
+      "displayName": "MSVC Release Package",
+      "configurePreset": "msvc-release",
+      "vendor": {
+        "msi": {
+          "packageName": "${PROJECT_NAME}-${version}",
+          "upgradeCode": "{YOUR-UPGRADE-GUID-HERE}"
+        }
+      }
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release Package",
+      "configurePreset": "gcc-release",
+      "vendor": {
+        "deb": {
+          "packageName": "${PROJECT_NAME}",
+          "maintainer": "${PROJECT_MAINTENER}",
+          "description": "${PROJECT_DESCRIPTION}"
+        },
+        "rpm": {
+          "packageName": "${PROJECT_NAME}",
+          "vendor": "${PROJECT_VENDOR}",
+          "summary": "${PROJECT_DESCRIPTION}"
+        }
+      }
+    }
+  ],
+   "workflowPresets": [
+    {
+      "name": "ci-workflow",
+      "displayName": "CI Workflow",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "gcc-release"
+        },
+        {
+          "type": "build",
+          "name": "gcc-release"
+        },
+        {
+          "type": "test",
+          "name": "gcc-release"
+        },
+        {
+          "type": "package",
+          "name": "gcc-release"
+        }
+      ]
+    }
+  ]
+}

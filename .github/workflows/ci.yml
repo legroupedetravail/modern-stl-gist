@@ -1,0 +1,44 @@
+name: CI
+
+on:
+
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Build Docker Image
+      run: docker build -t dev-container -f .devcontainer/Dockerfile .      
+                
+    - name: Configure Project
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --preset=gcc-release
+      
+    - name: Compile Project
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset=gcc-release
+
+    - name: Static Analysis
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset=gcc-release --target analyse
+      
+    - name: Unit Tests
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container ctest --preset=gcc-release
+
+    - name: Package Application (.deb)
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cpack --preset=gcc-release
+
+    - name: Upload DEB Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-package-deb
+        path: build/gcc-release/*.deb
+        retention-days: 7
