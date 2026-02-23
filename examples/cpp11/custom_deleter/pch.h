@@ -1,10 +1,10 @@
 /**
  *
- * modern-cpp-template
+ * modern-stl-gist
  *
  * CEA CNRS INRIA LOGICIEL LIBRE
  *
- * Copyright(c) 2026 Retro Technique
+ * Copyright(c) 2026 legroupedetravail
  *
  * This software is a computer program whose purpose is to provide
  * minimalist modern C++ functionalities for cross-platform development.
@@ -37,11 +37,8 @@
  *
  */
 
-#include "pch.h"
+#pragma once
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
-{
-    std::cout << "Hello, Modern C++ Template!" << std::endl;
-
-    return EXIT_SUCCESS;
-}
+#include <modbus.h>
+#include <memory>
+#include <string_view>

@@ -22,13 +22,12 @@ La toolchain inclut les outils suivants avec leurs versions :
 - **cccc** : 3.1.6 (analyse de métriques code)
 - **cppcheck** : 2.17.1 (analyse statique)
 - **gdb** : 16.3 (débogueur)
-- **doxygen** : 1.9.8 (génération de documentation)
 - **uncrustify** : 0.78.1 (formatage de code)
 - **cmake** : 3.31.6 (système de build)
-- **boost** : 1.83.0 (bibliothèques C++)
+- **libmodbus** : 3.1.11 (bibliothèque C)
 
 Le template inclut également :
-- Un workflow GitHub Actions CI/CD prêt à l'emploi (fichier `.github/workflows/c-cpp.yml`)
+- Un workflow GitHub Actions CI/CD prêt à l'emploi (fichier `.github/workflows/ci.yml`)
 - Configuration pré-établie pour le formatage de code avec uncrustify (fichier `.uncrustify`)
 - Configuration doxygen pour la génération de documentation
 - Un fichier `.gitignore` adapté aux projets C++
@@ -62,8 +61,6 @@ Une fois dans le container :
 - Le projet est configuré avec CMake et utilise des presets modernes
 - Utilisez `cmake --preset` pour configurer et construire
 - Les outils d'analyse (cppcheck, valgrind, etc.) sont disponibles
-- Les tests peuvent être exécutés avec `ctest --preset`
-- Utilisez `doxygen` pour générer la documentation
 - Utilisez `uncrustify` pour formater le code selon les règles définies
 
 **Commandes utiles avec les presets CMake :**
@@ -135,15 +132,12 @@ cmake --build --preset gcc-debug --target nom_de_la_cible
 
 ## Contribution
 
-Pour l'instant, ce projet est maintenu uniquement par OliveiraDF. Les contributions sont les bienvenues !
+Les contributions sont les bienvenues !
 
 ## FAQ
 
 **Q: Comment ajouter des dépendances ?**  
 R: Modifiez le fichier CMakeLists.txt et ajoutez vos dépendances via `find_package()` ou `add_subdirectory()`.
-
-**Q: Comment exécuter les tests ?**  
-R: Utilisez `ctest --preset gcc-debug` ou `ctest --preset gcc-release` pour exécuter les tests.
 
 **Q: Comment analyser la qualité du code ?**  
 R: Utilisez `cppcheck` pour l'analyse statique et `valgrind` pour détecter les fuites mémoire.
@@ -154,4 +148,4 @@ Ce projet est sous licence CeCILL. Voir le fichier [LICENSE](LICENSE) pour plus 
 
 ## Auteurs
 
-- **OliveiraDF** - Créateur et mainteneur principal
+- **OliveiraDF** - Créateur

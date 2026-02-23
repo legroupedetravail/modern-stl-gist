@@ -1,10 +1,10 @@
 /**
  *
- * modern-cpp-template
+ * modern-stl-gist
  *
  * CEA CNRS INRIA LOGICIEL LIBRE
  *
- * Copyright(c) 2026 Retro Technique
+ * Copyright(c) 2026 legroupedetravail
  *
  * This software is a computer program whose purpose is to provide
  * minimalist modern C++ functionalities for cross-platform development.
@@ -37,6 +37,17 @@
  *
  */
 
-#pragma once
+#include "pch.h"
 
-#include <iostream>
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
+{
+    static constexpr auto ADDRESS = "127.0.0.1";
+    static constexpr auto PORT    = 502;
+
+    std::unique_ptr<modbus_t, decltype(modbus_free) *> modbus(
+        modbus_new_tcp(ADDRESS, PORT),
+        modbus_free
+        );
+
+    return EXIT_SUCCESS;
+}

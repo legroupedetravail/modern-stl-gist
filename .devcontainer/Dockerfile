@@ -4,15 +4,15 @@ RUN apt-get update && apt-get install -y \
     sudo \
     build-essential \
     g++ \
-    libboost-all-dev \
+    libmodbus-dev \
     cmake \
     git \
     gdb \
     valgrind \
     cppcheck \
     uncrustify \
-    doxygen \
     cccc \
+    pkg-config \
     curl \
     file \
     && rm -rf /var/lib/apt/lists/*

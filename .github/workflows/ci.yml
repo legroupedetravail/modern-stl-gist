@@ -22,23 +22,10 @@ jobs:
       run: docker build -t dev-container -f .devcontainer/Dockerfile .      
                 
     - name: Configure Project
-      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --preset=gcc-release
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --preset gcc-release
       
     - name: Compile Project
-      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset=gcc-release
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset gcc-release
 
     - name: Static Analysis
-      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset=gcc-release --target analyse
-      
-    - name: Unit Tests
-      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container ctest --preset=gcc-release
-
-    - name: Package Application (.deb)
-      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cpack --preset=gcc-release
-
-    - name: Upload DEB Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: release-package-deb
-        path: build/gcc-release/*.deb
-        retention-days: 7
+      run: docker run --rm -u 0:0 -v ${{ github.workspace }}:/workspace -w /workspace dev-container cmake --build --preset gcc-release --target analyse

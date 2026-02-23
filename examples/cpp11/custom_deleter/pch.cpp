@@ -1,10 +1,10 @@
 /**
  *
- * modern-cpp-template
+ * modern-stl-gist
  *
  * CEA CNRS INRIA LOGICIEL LIBRE
  *
- * Copyright(c) 2026 Retro Technique
+ * Copyright(c) 2026 legroupedetravail
  *
  * This software is a computer program whose purpose is to provide
  * minimalist modern C++ functionalities for cross-platform development.

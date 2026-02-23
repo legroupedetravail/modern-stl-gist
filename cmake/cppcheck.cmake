@@ -16,8 +16,7 @@ if(CPPCHECK_PATH)
             --suppress=unmatchedSuppression
             --suppress=unusedFunction
             --error-exitcode=1
-            -I${CMAKE_SOURCE_DIR}/include
-            ${CMAKE_SOURCE_DIR}/src
+            ${CMAKE_SOURCE_DIR}/examples
         COMMENT "Analyse statique avec cppcheck"
         VERBATIM
     )
