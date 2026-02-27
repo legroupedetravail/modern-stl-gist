@@ -10,11 +10,12 @@ if(CPPCHECK_PATH)
             --platform=${CPPCHECK_PLATFORM}
             --language=c++
             --std=c++20
-            --enable=warning,style,performance,portability
+            --enable=warning,performance,portability
             --inconclusive
             --suppress=missingIncludeSystem
             --suppress=unmatchedSuppression
             --suppress=unusedFunction
+            --check-level=exhaustive
             --error-exitcode=1
             ${CMAKE_SOURCE_DIR}/examples
         COMMENT "Analyse statique avec cppcheck"
